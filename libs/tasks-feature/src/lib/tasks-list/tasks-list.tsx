@@ -37,7 +37,7 @@ export const TasksList = ({ tasks, selectTask, deleteTask }: TasksListProps) => 
         <List>
           {
             tasks.map((task) => (
-              <ListItem key={task.id} button onClick={selectTask(task)} >
+              <ListItem key={task.id} button onClick={() => selectTask(task)} >
                 <ListItemText primary={task.name} secondary={task.description} />
                 <ListItemSecondaryAction>
                   <IconButton edge="end" aria-label="comments" onClick={() => deleteTask(task.id)}>

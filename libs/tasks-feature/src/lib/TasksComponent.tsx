@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { useTasksApi } from '@task-manager/core-data';
 import { TasksList } from './tasks-list/tasks-list';
-import TasksDetails from './tasks-details/tasks-details';
+import { TasksDetails } from './tasks-details/tasks-details';
 import { Task } from '@task-manager/api-interfaces';
 import { TasksService } from '@task-manager/core-data';
 
@@ -35,7 +35,8 @@ export const TasksComponent = (props: TasksProps) => {
       <TasksList tasks={tasks}
         selectTask={setSelectedTask}
         deleteTask={onDelete} />
-      <TasksDetails />
+      <TasksDetails task={selectedTask}
+        cancel={setSelectedTask} />
     </TasksContainer>
   );
 };

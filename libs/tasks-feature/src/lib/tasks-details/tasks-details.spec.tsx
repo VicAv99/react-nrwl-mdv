@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import TasksDetails from './tasks-details';
+import { TasksDetails } from './tasks-details';
 
 describe(' TasksDetails', () => {
   it('should render successfully', () => {

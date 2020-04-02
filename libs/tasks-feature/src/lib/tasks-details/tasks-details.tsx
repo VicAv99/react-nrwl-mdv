@@ -1,20 +1,66 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  makeStyles,
+  CardHeader,
+  TextField
+} from '@material-ui/core';
+import { Task } from '@task-manager/api-interfaces';
 
-/* eslint-disable-next-line */
-export interface TasksDetailsProps {}
+export interface TasksDetailsProps {
+  task?: Task;
+  cancel?: Function;
+}
 
-const StyledTasksDetails = styled.div`
-  color: pink;
+const TasksDetailsForm = styled.form`
 `;
 
-export const TasksDetails = (props: TasksDetailsProps) => {
+const useStyles = makeStyles({
+  card: {
+    width: '100%',
+    marginLeft: '8px'
+  },
+  textField: {
+    width: '100%'
+  },
+  cardActions: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    marginRight: '3px'
+  }
+});
+
+export const TasksDetails = ({ task, cancel }: TasksDetailsProps) => {
+  const classes = useStyles();
+
   return (
-    <StyledTasksDetails>
-      <h1>Welcome to tasks-details component!</h1>
-    </StyledTasksDetails>
+    <Card className={classes.card}>
+      <CardHeader title={task?.id ? `Editing ${task.name}...` : 'Create a Task'} />
+      <CardContent>
+        <TasksDetailsForm>
+          <TextField className={classes.textField} id="outlined-basic" label="Outlined" variant="outlined" />
+          <TextField className={classes.textField} id="outlined-basic" label="Outlined" variant="outlined" />
+        </TasksDetailsForm>
+      </CardContent>
+      <CardActions className={classes.cardActions}>
+        <Button size="small" type="submit" color="primary">
+          {task?.id ? 'Update' : 'Submit'}
+        </Button>
+        <Button size="small" type="reset" color="primary" onClick={() => cancel()}>
+          Cancel
+        </Button>
+      </CardActions>
+    </Card>
   );
 };
 
-export default TasksDetails;
+TasksDetails.propTypes = {
+  task: PropTypes.object,
+  cancel: PropTypes.func
+}
