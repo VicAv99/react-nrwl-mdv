@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -40,7 +40,7 @@ export const TasksList = ({ tasks, selectTask, deleteTask }: TasksListProps) => 
               <ListItem key={task.id} button onClick={() => selectTask(task)} >
                 <ListItemText primary={task.name} secondary={task.description} />
                 <ListItemSecondaryAction>
-                  <IconButton edge="end" aria-label="comments" onClick={() => deleteTask(task.id)}>
+                  <IconButton edge="end" aria-label="comments" onClick={(e) => deleteTask(task.id, e) }>
                     <ClearTwoTone />
                   </IconButton>
                 </ListItemSecondaryAction>

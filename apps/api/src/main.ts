@@ -6,6 +6,7 @@ import { TasksController } from './app/tasks/tasks.controller';
 const app = express();
 const greeting: Message = { message: 'Welcome to api!' };
 
+app.use(express.json());
 app.use(cors());
 
 app.get('/api', (req, res) => {

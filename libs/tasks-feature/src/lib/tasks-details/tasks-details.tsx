@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import PropTypes from 'prop-types';
 
-import styled from 'styled-components';
 import {
   Button,
   Card,
@@ -19,10 +18,8 @@ export interface TasksDetailsProps {
   control: Control<unknown>;
   task?: Task;
   cancel?: Function;
+  save?: (event: FormEvent<HTMLFormElement>) => void;
 }
-
-const TasksDetailsForm = styled.form`
-`;
 
 const useStyles = makeStyles({
   card: {
@@ -39,19 +36,19 @@ const useStyles = makeStyles({
   }
 });
 
-export const TasksDetails = ({ control, task, cancel }: TasksDetailsProps) => {
+export const TasksDetails = ({ control, task, cancel, save }: TasksDetailsProps) => {
   const classes = useStyles();
 
   return (
     <Card className={classes.card}>
       <CardHeader title={task?.id ? `Editing ${task.name}...` : 'Create a Task'} />
-      <CardContent>
-        <TasksDetailsForm>
+      <form onSubmit={save}>
+        <CardContent>
           <Controller
             as={<TextField />}
             className={classes.textField}
             control={control}
-            rules={{required: true}}
+            rules={{ required: true }}
             label="Task Name"
             variant="outlined"
             placeholder="Type a Task Name..."
@@ -61,22 +58,22 @@ export const TasksDetails = ({ control, task, cancel }: TasksDetailsProps) => {
             as={<TextField />}
             className={classes.textField}
             control={control}
-            rules={{required: false}}
+            rules={{ required: false }}
             label="Task Description"
             variant="outlined"
             placeholder="Type a Task Description..."
             name="description"
             defaultValue="" />
-        </TasksDetailsForm>
-      </CardContent>
-      <CardActions className={classes.cardActions}>
-        <Button size="small" type="submit" color="primary">
-          {task?.id ? 'Update' : 'Submit'}
+        </CardContent>
+        <CardActions className={classes.cardActions}>
+          <Button size="small" type="submit" color="primary">
+            {task?.id ? 'Update' : 'Submit'}
+          </Button>
+          <Button size="small" type="reset" color="primary" onClick={() => cancel()}>
+            Cancel
         </Button>
-        <Button size="small" type="reset" color="primary" onClick={() => cancel()}>
-          Cancel
-        </Button>
-      </CardActions>
+        </CardActions>
+      </form>
     </Card>
   );
 };
@@ -84,5 +81,6 @@ export const TasksDetails = ({ control, task, cancel }: TasksDetailsProps) => {
 TasksDetails.propTypes = {
   control: PropTypes.object.isRequired,
   task: PropTypes.object,
-  cancel: PropTypes.func
+  cancel: PropTypes.func,
+  save: PropTypes.func
 }
