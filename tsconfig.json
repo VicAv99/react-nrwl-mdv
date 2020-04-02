@@ -18,7 +18,8 @@
     "paths": {
       "@task-manager/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@task-manager/ui-toolbar": ["libs/ui-libraries/ui-toolbar/src/index.ts"],
-      "@tn/core-data": ["libs/core-data/src/index.ts"]
+      "@task-manager/core-data": ["libs/core-data/src/index.ts"],
+      "@task-manager/tasks-feature": ["libs/tasks-feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

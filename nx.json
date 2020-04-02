@@ -1,5 +1,5 @@
 {
-  "npmScope": "tn",
+  "npmScope": "task-manager",
   "implicitDependencies": {
     "workspace.json": "*",
     "package.json": {
@@ -36,6 +36,9 @@
       "tags": []
     },
     "core-data": {
+      "tags": []
+    },
+    "tasks-feature": {
       "tags": []
     }
   }

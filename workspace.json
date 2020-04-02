@@ -251,6 +251,34 @@
           }
         }
       }
+    },
+    "tasks-feature": {
+      "root": "libs/tasks-feature",
+      "sourceRoot": "libs/tasks-feature/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/tasks-feature/.eslintrc",
+            "tsConfig": [
+              "libs/tasks-feature/tsconfig.lib.json",
+              "libs/tasks-feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/tasks-feature/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/tasks-feature/jest.config.js",
+            "tsConfig": "libs/tasks-feature/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

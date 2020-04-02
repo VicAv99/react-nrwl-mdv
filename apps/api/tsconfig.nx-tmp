@@ -12,8 +12,11 @@
       "@task-manager/ui-toolbar": [
         "libs/ui-libraries/ui-toolbar/src/index.ts"
       ],
-      "@tn/core-data": [
+      "@task-manager/core-data": [
         "libs/core-data/src/index.ts"
+      ],
+      "@task-manager/tasks-feature": [
+        "libs/tasks-feature/src/index.ts"
       ]
     }
   },

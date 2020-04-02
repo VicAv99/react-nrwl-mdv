@@ -1,29 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import { Message } from '@task-manager/api-interfaces';
-import { UiToolbar } from '@task-manager/ui-toolbar';
+import React from 'react';
+
+import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
+
 import { theme } from '../theme';
+import { TaskRoutes } from './router';
+import { UiToolbar } from '@task-manager/ui-toolbar';
+
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+`;
+
+const ToolbarSpacer = styled.div`
+  margin-top: 50px;
+`;
 
 export const App = () => {
-  const [ m, setMessage ] = useState<Message>({ message: '' });
-
-  useEffect(() => {
-    fetch('/api')
-      .then(r => r.json())
-      .then(setMessage);
-  }, []);
-
   return (
     <ThemeProvider theme={theme}>
-      <UiToolbar title="Task Manager" />
-      <div style={{ textAlign: 'center' }}>
-        <h1>Welcome to tasks!</h1>
-        <img
-          width="450"
-          src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png"
-        />
-      </div>
-      <div>s{m.message}</div>
+      <MainContainer>
+        <UiToolbar title="Task Manager" />
+        <ToolbarSpacer>
+          <TaskRoutes />
+        </ToolbarSpacer>
+      </MainContainer>
     </ThemeProvider>
   );
 };
