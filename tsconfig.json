@@ -16,7 +16,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tn/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@tn/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@tn/ui-libraries/ui-toolbar": [
+        "libs/ui-libraries/ui-toolbar/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

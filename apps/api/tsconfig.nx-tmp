@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "@tn/api-interfaces": [
+        "libs/api-interfaces/src/index.ts"
+      ],
+      "@tn/ui-libraries/ui-toolbar": [
+        "libs/ui-libraries/ui-toolbar/src/index.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "**/*.spec.ts"
+  ],
+  "include": [
+    "**/*.ts"
+  ]
+}

@@ -19,7 +19,7 @@ export const App = () => {
           src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png"
         />
       </div>
-      <div>{m.message}</div>
+      <div>s{m.message}</div>
     </>
   );
 };

@@ -1,9 +1,11 @@
 import * as express from 'express';
+import * as cors from 'cors';
 import { Message } from '@tn/api-interfaces';
 
 const app = express();
-
 const greeting: Message = { message: 'Welcome to api!' };
+
+app.use(cors());
 
 app.get('/api', (req, res) => {
   res.send(greeting);

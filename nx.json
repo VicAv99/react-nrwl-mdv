@@ -31,6 +31,9 @@
     },
     "api-interfaces": {
       "tags": []
+    },
+    "ui-libraries-ui-toolbar": {
+      "tags": []
     }
   }
 }

@@ -192,6 +192,37 @@
           }
         }
       }
+    },
+    "ui-libraries-ui-toolbar": {
+      "root": "libs/ui-libraries/ui-toolbar",
+      "sourceRoot": "libs/ui-libraries/ui-toolbar/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/ui-libraries/ui-toolbar/.eslintrc",
+            "tsConfig": [
+              "libs/ui-libraries/ui-toolbar/tsconfig.lib.json",
+              "libs/ui-libraries/ui-toolbar/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ui-libraries/ui-toolbar/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui-libraries/ui-toolbar/jest.config.js",
+            "tsConfig": "libs/ui-libraries/ui-toolbar/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
