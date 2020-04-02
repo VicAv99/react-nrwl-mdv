@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -17,6 +17,8 @@ import { Task } from '@task-manager/api-interfaces';
 
 export interface TasksListProps {
   tasks: Task[];
+  selectTask?: Function;
+  deleteTask?: Function;
 }
 
 const useStyles = makeStyles({
@@ -26,7 +28,7 @@ const useStyles = makeStyles({
   }
 });
 
-export const TasksList = ({ tasks }: TasksListProps) => {
+export const TasksList = ({ tasks, selectTask, deleteTask }: TasksListProps) => {
   const classes = useStyles();
 
   return (
@@ -35,10 +37,10 @@ export const TasksList = ({ tasks }: TasksListProps) => {
         <List>
           {
             tasks.map((task) => (
-              <ListItem key={task.id} button >
+              <ListItem key={task.id} button onClick={selectTask(task)} >
                 <ListItemText primary={task.name} secondary={task.description} />
                 <ListItemSecondaryAction>
-                  <IconButton edge="end" aria-label="comments">
+                  <IconButton edge="end" aria-label="comments" onClick={() => deleteTask(task.id)}>
                     <ClearTwoTone />
                   </IconButton>
                 </ListItemSecondaryAction>
@@ -52,5 +54,7 @@ export const TasksList = ({ tasks }: TasksListProps) => {
 };
 
 TasksList.propTypes = {
-  tasks: PropTypes.array
+  tasks: PropTypes.array.isRequired,
+  selectTask: PropTypes.func,
+  deleteTask: PropTypes.func
 }
