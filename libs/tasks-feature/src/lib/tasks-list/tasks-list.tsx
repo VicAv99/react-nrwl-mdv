@@ -1,20 +1,56 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import styled from 'styled-components';
+import {
+  Card,
+  CardContent,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
+  makeStyles,
+  IconButton
+} from '@material-ui/core';
+import { ClearTwoTone } from '@material-ui/icons';
 
-/* eslint-disable-next-line */
-export interface TasksListProps {}
+import { Task } from '@task-manager/api-interfaces';
 
-const StyledTasksList = styled.div`
-  color: pink;
-`;
+export interface TasksListProps {
+  tasks: Task[];
+}
 
-export const TasksList = (props: TasksListProps) => {
+const useStyles = makeStyles({
+  card: {
+    width: '100%',
+    marginRight: '8px'
+  }
+});
+
+export const TasksList = ({ tasks }: TasksListProps) => {
+  const classes = useStyles();
+
   return (
-    <StyledTasksList>
-      <h1>Welcome to tasks-list component!</h1>
-    </StyledTasksList>
+    <Card className={classes.card}>
+      <CardContent>
+        <List>
+          {
+            tasks.map((task) => (
+              <ListItem key={task.id} button >
+                <ListItemText primary={task.name} secondary={task.description} />
+                <ListItemSecondaryAction>
+                  <IconButton edge="end" aria-label="comments">
+                    <ClearTwoTone />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+            ))
+          }
+        </List>
+      </CardContent>
+    </Card>
   );
 };
 
-export default TasksList;
+TasksList.propTypes = {
+  tasks: PropTypes.array
+}

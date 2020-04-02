@@ -8,10 +8,10 @@ const TASKS: Task[] = [
 
 export const TasksController = (app: Express) => {
   app.get('/api/tasks', (req: Request, res: Response) => {
-    res.send({data: TASKS});
+    res.send(TASKS);
   });
   app.get('/api/tasks/:id', (req: Request, res: Response) => {
     const task = TASKS.find((task) => task.id === +req.params.id);
-    res.send({data: task});
+    res.send(task);
   });
 }
