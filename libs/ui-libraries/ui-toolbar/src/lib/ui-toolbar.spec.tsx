@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import UiLibrariesUiToolbar from './ui-libraries-ui-toolbar';
+import { UiToolbar } from './ui-toolbar';
 
-describe(' UiLibrariesUiToolbar', () => {
+describe(' UiToolbar', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<UiLibrariesUiToolbar />);
+    const { baseElement } = render(<UiToolbar title="" />);
     expect(baseElement).toBeTruthy();
   });
 });

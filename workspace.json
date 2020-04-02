@@ -193,7 +193,7 @@
         }
       }
     },
-    "ui-libraries-ui-toolbar": {
+    "ui-toolbar": {
       "root": "libs/ui-libraries/ui-toolbar",
       "sourceRoot": "libs/ui-libraries/ui-toolbar/src",
       "projectType": "library",

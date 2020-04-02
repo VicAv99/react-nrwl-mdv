@@ -16,8 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tn/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@tn/ui-libraries/ui-toolbar": [
+      "@task-manager/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@task-manager/ui-toolbar": [
         "libs/ui-libraries/ui-toolbar/src/index.ts"
       ]
     }

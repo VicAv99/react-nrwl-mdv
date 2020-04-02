@@ -1,1 +1,1 @@
-export * from './lib/ui-libraries-ui-toolbar';
+export { UiToolbar } from './lib/ui-toolbar';

@@ -32,7 +32,7 @@
     "api-interfaces": {
       "tags": []
     },
-    "ui-libraries-ui-toolbar": {
+    "ui-toolbar": {
       "tags": []
     }
   }

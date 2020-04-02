@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Message } from '@tn/api-interfaces';
+import { Message } from '@task-manager/api-interfaces';
+import { UiToolbar } from '@task-manager/ui-toolbar';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../theme';
 
 export const App = () => {
-  const [m, setMessage] = useState<Message>({ message: '' });
+  const [ m, setMessage ] = useState<Message>({ message: '' });
 
   useEffect(() => {
     fetch('/api')
@@ -11,7 +14,8 @@ export const App = () => {
   }, []);
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <UiToolbar title="Task Manager" />
       <div style={{ textAlign: 'center' }}>
         <h1>Welcome to tasks!</h1>
         <img
@@ -20,7 +24,7 @@ export const App = () => {
         />
       </div>
       <div>s{m.message}</div>
-    </>
+    </ThemeProvider>
   );
 };
 
