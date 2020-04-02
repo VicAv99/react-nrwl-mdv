@@ -36,6 +36,7 @@
     "proptypes": "^1.1.0",
     "react": "16.12.0",
     "react-dom": "16.12.0",
+    "react-hook-form": "^5.2.0",
     "react-router-dom": "^5.1.2",
     "styled-components": "5.0.1"
   },

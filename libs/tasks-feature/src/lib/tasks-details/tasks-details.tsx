@@ -11,9 +11,12 @@ import {
   CardHeader,
   TextField
 } from '@material-ui/core';
+import { Controller, Control } from 'react-hook-form';
+
 import { Task } from '@task-manager/api-interfaces';
 
 export interface TasksDetailsProps {
+  control: Control<unknown>;
   task?: Task;
   cancel?: Function;
 }
@@ -36,7 +39,7 @@ const useStyles = makeStyles({
   }
 });
 
-export const TasksDetails = ({ task, cancel }: TasksDetailsProps) => {
+export const TasksDetails = ({ control, task, cancel }: TasksDetailsProps) => {
   const classes = useStyles();
 
   return (
@@ -44,8 +47,26 @@ export const TasksDetails = ({ task, cancel }: TasksDetailsProps) => {
       <CardHeader title={task?.id ? `Editing ${task.name}...` : 'Create a Task'} />
       <CardContent>
         <TasksDetailsForm>
-          <TextField className={classes.textField} id="outlined-basic" label="Outlined" variant="outlined" />
-          <TextField className={classes.textField} id="outlined-basic" label="Outlined" variant="outlined" />
+          <Controller
+            as={<TextField />}
+            className={classes.textField}
+            control={control}
+            rules={{required: true}}
+            label="Task Name"
+            variant="outlined"
+            placeholder="Type a Task Name..."
+            name="name"
+            defaultValue="" />
+          <Controller
+            as={<TextField />}
+            className={classes.textField}
+            control={control}
+            rules={{required: false}}
+            label="Task Description"
+            variant="outlined"
+            placeholder="Type a Task Description..."
+            name="description"
+            defaultValue="" />
         </TasksDetailsForm>
       </CardContent>
       <CardActions className={classes.cardActions}>
@@ -61,6 +82,7 @@ export const TasksDetails = ({ task, cancel }: TasksDetailsProps) => {
 };
 
 TasksDetails.propTypes = {
+  control: PropTypes.object.isRequired,
   task: PropTypes.object,
   cancel: PropTypes.func
 }
